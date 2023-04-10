@@ -1,31 +1,23 @@
 import { NextResponse } from 'next/server';
 import pool from '../../lib/db';
+import { PrismaClient } from '@prisma/client';
 
-export async function GET() {
-  const requestResponse = await pool.query(
-    'SELECT * FROM user_names',
-    (err: any, res: any) => {
-      if (err) {
-        console.error(err);
-      } else {
-        // console.log(res.rows);
-        return res.rows;
-      }
-    }
-  );
+const prisma = new PrismaClient();
+
+export async function GET(request: Request) {
+  const requestResponse = await prisma.user.findMany();
   console.log(requestResponse);
+  let response = NextResponse.json({ data: requestResponse });
+  return response;
 }
 
 export async function POST(request: Request) {
-  const res = await request.json();
-
-  const text = 'INSERT INTO comments(body, alias) VALUES($1, $2)';
-  const values = Object.values(res);
-  pool.query(text, values, (err: { stack: any }, res: { rows: any[] }) => {
-    if (err) {
-      console.log(err.stack);
-    } else {
-      console.log(res.rows[0]);
-    }
+  const { comment_body, alias } = await request.json();
+  const result = await prisma.comments.create({
+    data: {
+      comment_body,
+      alias,
+    },
   });
+  return NextResponse.json({ message: result });
 }

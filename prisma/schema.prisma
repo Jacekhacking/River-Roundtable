@@ -1,0 +1,19 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model comments {
+  id           Int     @id @default(autoincrement())
+  comment_body String
+  alias        String?
+}
+
+model user_names {
+  id   Int    @unique @default(autoincrement())
+  name String
+}
