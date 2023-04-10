@@ -13,7 +13,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="bg-zinc-200 h-screen w-screen text-white bg-no-repeat bg-cover ">
+      <body className="bg-zinc-300 h-screen w-screen text-white bg-no-repeat bg-cover ">
         <div className=" hidden bg-white/10 backdrop-blur-sm md:flex flex-col items-center justify-between border-r-2 border-zinc-500 w-12 h-screen fixed left-0 ">
           <div>
             <ul className="flex flex-col">
