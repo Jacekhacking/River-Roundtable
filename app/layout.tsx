@@ -16,7 +16,7 @@ export default function RootLayout({
       <body className="bg-zinc-100 h-screen w-screen text-white bg-no-repeat bg-cover ">
         {/* @ts-expect-error Server Component */}
         <Navigation />
-        {children}
+        <div className="md:pl-20">{children}</div>
       </body>
     </html>
   );

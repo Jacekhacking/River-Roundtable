@@ -8,7 +8,7 @@ export default async function HomePage() {
 
   return (
     <>
-      <div className="md:pl-20 h-full w-full flex flex-col items-center p-10 text-zinc-800">
+      <div className=" h-full w-full flex flex-col items-center p-10 text-zinc-800">
         <h1 className=" text-center text-3xl  bg-emerald-700/40 h-20 flex items-center px-4  py-4 rounded-md ">
           {!session?.user && ` Welcome to River Round Table`}
           {session?.user &&
