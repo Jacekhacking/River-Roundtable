@@ -1,7 +1,4 @@
-import ReactMarkdown from "react-markdown";
-import remarkGfm from 'remark-gfm';
-import {isHTTPMethod} from "next/dist/server/web/http";
-
+import Link from "next/link";
 async function getPosts() {
   const res = await fetch('http://localhost:3000/api/posts',{
     method: "GET",
@@ -19,10 +16,12 @@ export default async function PostPage() {
       {data?.map((post:PostsType) => (
         <div
           key={post.id}
-          className=" h-full w-full flex flex-col items-center p-10 text-zinc-800 prose lg:prose-xl"
+          className=" h-full flex flex-col items-center  text-zinc-800 "
         >
-          <h2 className="text-black">{post.title}</h2>
-          <ReactMarkdown children={post.content} remarkPlugins={[remarkGfm]}/>
+          <div className=''>
+            <Link className="text-black" href={`/posts/${post.id}`}>{post.title}</Link>
+          </div>
+
         </div>
       ))}
     </div>

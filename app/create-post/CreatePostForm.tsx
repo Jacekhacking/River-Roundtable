@@ -26,8 +26,6 @@ Markdown is the most popular markup language that can be used to format document
 `
   );
 
-  console.log(session?.user)
-
   const formSubmitHandler = async (event: any) => {
     event.preventDefault();
 
