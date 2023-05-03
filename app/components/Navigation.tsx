@@ -27,6 +27,9 @@ export default async function Navigation() {
             <Link href={'/posts'} className=" py-2 text-xl">
               Posts
             </Link>
+            <Link href={'/create-post'} className=" py-2 text-xl">
+              Create
+            </Link>
           </div>
 
           <Logout />
